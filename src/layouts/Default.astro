@@ -7,6 +7,7 @@
 import Head from '../components/Head.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
 
 interface Props {
   title?: string | undefined
@@ -38,6 +39,7 @@ const { nav = { enabled: true }, footer = { enabled: true } } = theme || {}
     <div class='flex flex-col h-full w-full'>
       {nav?.enabled ? <Nav /> : null}
       <slot />
+      <SpeedInsights />
       {footer?.enabled ? <Footer /> : null}
     </div>
 

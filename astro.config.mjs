@@ -5,7 +5,6 @@ import sitemap from '@astrojs/sitemap'
 import robotsTxt from 'astro-robots-txt'
 import sentry from '@sentry/astro'
 import preact from '@astrojs/preact'
-
 import vercel from '@astrojs/vercel/serverless'
 
 // https://astro.build/config
@@ -38,5 +37,7 @@ export default defineConfig({
       }
     })
   ],
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  })
 })
