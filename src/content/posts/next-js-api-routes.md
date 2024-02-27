@@ -14,7 +14,7 @@ description: Next.JS comes with a useful feature out of the box, api routes.
   rather than a page. Instead of exporting a React component to display
   your UI, you can export a function returning, say, a JSON response.
 tags:
-  - next.js
+  - Next.js
   - snippet
 ---
 

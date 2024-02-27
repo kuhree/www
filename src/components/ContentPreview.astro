@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { extractTitle } from 'src/lib/content'
+import { extractTitle, slugify } from 'src/lib/content'
 
 interface Props {
   entry: CollectionEntry<'work' | 'posts'>
@@ -32,14 +32,14 @@ const { publishedAt, banner, banner_alt, tags } = data,
     <span class='date'>{publishedAt.toLocaleDateString()}</span>
     <ul class='flex flex-wrap gap-2'>
       {
-        tags?.map((tag) => (
+        tags?.slice(0, 4).map((tag) => (
           <li>
-            <a href={`/tags/${tags}`} class='capitalize'>
-              {tag}
-            </a>
+            <a href={`/tags/${slugify(tag)}`}>{tag}</a>
           </li>
         ))
       }
+
+      {tags && tags?.length > 4 ? <li>...</li> : null}
     </ul>
   </section>
 </article>

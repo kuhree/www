@@ -32,13 +32,16 @@ export function extractTitle(
 type SlugInput = string | Frontmatter
 
 export function slugify(item: SlugInput): string {
+  let slug = item
   if (typeof item === 'string') {
-    return slugger(item)
+    slug = slugger(item)
   } else if (extractTitle(item.data)) {
-    return extractTitle(item.data)
+    slug = extractTitle(item.data)
   } else {
-    return '/404'
+    slug = '/404'
   }
+
+  return slug.replace('--', '-')
 }
 
 export function slugifyMany(list: SlugInput[]) {
