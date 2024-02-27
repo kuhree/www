@@ -56,8 +56,6 @@ export function getPageNumbers(numberOfPosts: number) {
   return pageNumbers
 }
 
-export default getPageNumbers
-
 export function sortContent(content: Frontmatter[]) {
   return content
     .filter((entry) =>
@@ -102,4 +100,29 @@ export function getUniqueTags(content: Frontmatter[]) {
   })
 
   return tags
+}
+
+export function groupContentByTag(content: Frontmatter[]) {
+  const contentByTag: Array<[string, Frontmatter[]]> = content.reduce(
+    (prev, curr) => {
+      const tags = getUniqueTags([curr])
+
+      if (tags?.length) {
+        for (const tag of tags) {
+          const currIndex = prev.findIndex((entry) => entry[0] === tag)
+
+          if (prev[currIndex]) {
+            prev[currIndex][1].push(curr)
+          } else {
+            prev[prev.length] = [tag, [curr]]
+          }
+        }
+      }
+
+      return prev
+    },
+    [] as Array<[string, Frontmatter[]]>
+  )
+
+  return contentByTag
 }

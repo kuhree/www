@@ -37,7 +37,7 @@
   }
 
   .prose {
-    @apply prose-slate prose-sm dark:prose-invert;
+    @apply prose-gray prose-sm dark:prose-invert;
   }
 
   .prose a {
