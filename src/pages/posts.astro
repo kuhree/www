@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 
 import BaseLayout from '../layouts/Default.astro'
 
-import PortfolioPreview from '../components/ContentPreview.astro'
+import ContentPreview from '../components/ContentPreview.astro'
 import Hero from '../components/ui/Hero.astro'
 import Grid from '../components/ui/Grid.astro'
 import { SITE } from '../config'
@@ -27,9 +27,9 @@ const posts = sortContent(await getCollection('posts'))
 
     <Grid variant='offset'>
       {
-        posts.map((post) => (
+        posts.map((entry) => (
           <li>
-            <PortfolioPreview project={post} />
+            <ContentPreview entry={entry} />
           </li>
         ))
       }

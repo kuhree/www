@@ -12,10 +12,8 @@ interface Props {
 const { entry } = Astro.props
 const { Content: MxContent } = await entry.render()
 
-const { description, tags } = entry.data,
-  title = extractTitle(entry.data),
-  imgSrc = 'banner' in entry.data ? entry.data.banner : entry.data.img,
-  imgAlt = 'banner' in entry.data ? entry.data.banner_alt : entry.data.img_alt
+const { description, tags, banner, banner_alt } = entry.data,
+  title = extractTitle(entry.data)
 ---
 
 <BaseLayout title={title} description={description}>
@@ -62,7 +60,7 @@ const { description, tags } = entry.data,
         </slot>
       </Hero>
 
-      {imgSrc && imgSrc !== '' && <img src={imgSrc} alt={imgAlt} />}
+      {banner && banner !== '' && <img src={banner} alt={banner_alt} />}
 
       <MxContent />
     </section>

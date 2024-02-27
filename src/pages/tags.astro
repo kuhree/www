@@ -2,14 +2,12 @@
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../layouts/Default.astro'
-import PortfolioPreview from '../components/ContentPreview.astro'
 import Hero from '../components/ui/Hero.astro'
 import Grid from '../components/ui/Grid.astro'
 import type { Frontmatter } from '../content/config'
 import { SITE } from '../config'
 import {
   extractTitle,
-  getUniqueTags,
   groupContentByTag,
   slugify,
   sortContent

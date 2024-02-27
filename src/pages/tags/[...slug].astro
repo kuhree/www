@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content'
 
 import { SITE } from '../../config'
 import type { Frontmatter } from '../../content/config'
-import { groupContentByTag, slugify, sortContent } from '../../lib/content'
+import { groupContentByTag, slugify } from '../../lib/content'
 import BaseLayout from '../../layouts/Default.astro'
-import PortfolioPreview from '../../components/ContentPreview.astro'
+import ContentPreview from '../../components/ContentPreview.astro'
 import Hero from '../../components/ui/Hero.astro'
 import Grid from '../../components/ui/Grid.astro'
 
@@ -36,7 +36,6 @@ export async function getStaticPaths() {
 }
 
 const { tag, entries } = Astro.props
-const { slug } = Astro.params
 ---
 
 <BaseLayout
@@ -54,7 +53,7 @@ const { slug } = Astro.params
       {
         entries.map((entry) => (
           <li>
-            <PortfolioPreview project={entry} />
+            <ContentPreview entry={entry} />
           </li>
         ))
       }
