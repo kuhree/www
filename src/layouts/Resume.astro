@@ -24,4 +24,14 @@ const { frontmatter } = Astro.props
   .breadcrumb ul {
     padding-left: 0px;
   }
+
+  footer {
+    display: none !important;
+  }
+
+  @media print {
+    nav {
+      display: none !important;
+    }
+  }
 </style>
