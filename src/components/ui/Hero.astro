@@ -1,4 +1,6 @@
 ---
+import Breadcrumbs from '../Breadcrumbs.astro'
+
 interface Props {
   title: string
   tagline?: string
@@ -20,6 +22,7 @@ const { align = 'center', tagline, title } = Astro.props
       { 'mx-0': align === 'start', 'mx-auto': align === 'center' }
     ]}
   >
+    <Breadcrumbs />
     <h1
       class:list={[
         'title text-3xl lg:text-5xl font-bold',

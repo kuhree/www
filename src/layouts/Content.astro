@@ -1,0 +1,91 @@
+---
+import BaseLayout from './Default.astro'
+
+import type { Frontmatter } from 'src/content/config'
+import Hero from '../components/ui/Hero.astro'
+import { extractTitle, slugify } from '../lib/content'
+
+interface Props {
+  entry: Frontmatter
+}
+
+const { entry } = Astro.props
+const { Content: MxContent } = await entry.render()
+
+const { description, tags } = entry.data,
+  title = extractTitle(entry.data),
+  imgSrc = 'banner' in entry.data ? entry.data.banner : entry.data.img,
+  imgAlt = 'banner' in entry.data ? entry.data.banner_alt : entry.data.img_alt
+---
+
+<BaseLayout title={title} description={description}>
+  <main
+    class:list={[
+      'w-full px-12',
+      'flex flex-col gap-12 md:flex-row-reverse items-center md:items-stretch justify-start mx-auto max-w-screen-2xl'
+    ]}
+  >
+    <aside
+      class:list={[
+        'mx-auto md:mx-0 sticky top-10 md:min-h-96 p-4 rounded bg-stone-100 dark:bg-stone-900',
+        'border-2 border-solid border-primary-900 dark:border-primary-700',
+        'md:flex-[0.4] max-w-sm self-start',
+        'shadow-md shadow-primary-500'
+      ]}
+    >
+      <slot name='aside-content'>
+        <ul class:list={['tags flex flex-wrap gap-2']}>
+          {
+            tags?.map((t) => (
+              <li
+                class:list={[
+                  'tag py-1 px-3 rounded-full',
+                  'border-2 border-solid border-primary-700 dark:border-primary-300'
+                ]}
+              >
+                <a href={`/tags/${slugify(t)}`} class:list={['tag']}>
+                  {t}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </slot>
+    </aside>
+
+    <section class='content flex flex-col gap-10 prose max-w-3xl px-0'>
+      <Hero title={title} align='start'>
+        <slot name='hero-content'>
+          <div class='details'>
+            <p class='description text-md mb-4'>{description}</p>
+          </div>
+        </slot>
+      </Hero>
+
+      {imgSrc && imgSrc !== '' && <img src={imgSrc} alt={imgAlt} />}
+
+      <MxContent />
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  header {
+    padding-bottom: 2.5rem;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .description {
+    max-width: 54ch;
+  }
+
+  .content {
+    margin-inline: auto;
+  }
+</style>

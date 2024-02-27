@@ -1,12 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
 
-import BaseLayout from '../../layouts/Default.astro'
-
-import Hero from '../../components/ui/Hero.astro'
-import Pill from '../../components/ui/Pill.astro'
-import Breadcrumbs from '../../components/Breadcrumbs.astro'
-import { extractTitle, slugify } from 'src/lib/content'
+import ContentLayout from '../../layouts/Content.astro'
 
 interface Props {
   entry: CollectionEntry<'posts'>
@@ -26,60 +21,9 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props
-const { Content } = await entry.render()
-
-let { description, tags, banner, banner_alt } = entry.data,
-  title = extractTitle(entry.data)
 ---
 
-<BaseLayout title={title} description={description}>
-  <main
-    class:list={[
-      'w-full px-12',
-      'flex flex-col gap-12 md:flex-row-reverse items-center md:items-stretch justify-start mx-auto max-w-screen-2xl'
-    ]}
-  >
-    <aside
-      class:list={[
-        'mx-auto md:mx-0 sticky top-10 md:min-h-96 p-4 rounded bg-stone-100 dark:bg-stone-900',
-        'border-2 border-solid border-primary-900 dark:border-primary-700',
-        'md:flex-[0.4] max-w-sm self-start',
-        'shadow-md shadow-primary-500'
-      ]}
-    >
-      <Breadcrumbs />
-
-      <ul class:list={['tags flex flex-wrap gap-2']}>
-        {
-          tags?.map((t) => (
-            <li
-              class:list={[
-                'tag py-1 px-3 rounded-full',
-                'border-2 border-solid border-primary-700 dark:border-primary-300'
-              ]}
-            >
-              <a href={`/tags/${slugify(t)}`} class:list={['tag']}>
-                {t}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </aside>
-
-    <section class='content flex flex-col gap-10 prose max-w-3xl px-0'>
-      <Hero title={title} align='start'>
-        <div class='details'>
-          <p class='description text-md mb-4'>{description}</p>
-        </div>
-      </Hero>
-
-      {entry.data.banner && <img src={banner} alt={banner_alt || title} />}
-
-      <Content />
-    </section>
-  </main>
-</BaseLayout>
+<ContentLayout entry={entry} />
 
 <style>
   header {

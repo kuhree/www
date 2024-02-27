@@ -8,7 +8,6 @@ import BaseLayout from '../../layouts/Default.astro'
 import PortfolioPreview from '../../components/ContentPreview.astro'
 import Hero from '../../components/ui/Hero.astro'
 import Grid from '../../components/ui/Grid.astro'
-import Breadcrumbs from 'src/components/Breadcrumbs.astro'
 
 const siteOwnerName = SITE.owner.name
 
@@ -51,7 +50,6 @@ const { slug } = Astro.params
       align='start'
     />
 
-    <Breadcrumbs />
     <Grid>
       {
         entries.map((entry) => (
