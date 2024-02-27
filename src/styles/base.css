@@ -37,11 +37,11 @@
   }
 
   .prose {
-    @apply prose-gray prose-sm dark:prose-invert;
+    @apply prose-gray dark:prose-invert;
   }
 
   .prose a {
-    @apply prose-purple;
+    @apply font-bold;
   }
 }
 
