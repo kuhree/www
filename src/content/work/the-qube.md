@@ -8,10 +8,14 @@ banner_alt: The Qube's logo. A Gamecube-like shaped like a Q with a prism cube i
 description: |
   An unconditional love and time travel application for worldwide benefit.
 tags:
+  - Full-Stack
   - Customer Support
-  - React.js
+  - Operations
+  - Typescript
   - Next.js
+  - Postgres
   - Vercel
+  - Google Cloud
 ---
 
 ## Table of Contents

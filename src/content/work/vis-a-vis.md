@@ -8,6 +8,7 @@ banner_alt: The Time Machine homepage background (a time-machine, a tent and cam
 description: |
   An unconditional love and time travel application for worldwide benefit.
 tags:
+  - Frontend
   - React.js
   - Next.js
   - Typescript
