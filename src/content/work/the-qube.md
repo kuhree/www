@@ -10,7 +10,6 @@ description: |
 tags:
   - Full-Stack
   - Customer Support
-  - Operations
   - Typescript
   - Next.js
   - Postgres

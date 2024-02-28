@@ -9,10 +9,9 @@ description: |
   An unconditional love and time travel application for worldwide benefit.
 tags:
   - Frontend
-  - React.js
-  - Next.js
   - Typescript
   - Mediapipe
+  - React.js
   - Redux
 ---
 
