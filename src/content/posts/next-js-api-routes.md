@@ -20,6 +20,8 @@ tags:
 
 ## Table of contents
 
+## Usage
+
 Next.JS comes with a useful feature out of the box, api routes. Files created in the `pages/api/` folder are treated as an endpoint rather than a page. Instead of exporting a React component to display your UI, you can export a function returning, say, a JSON response.
 
 For example, if you wanted to return a post from your CMS, you could write the following in file `pages/api/post.js` :
