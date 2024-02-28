@@ -59,6 +59,15 @@ export function getPageNumbers(numberOfPosts: number) {
   return pageNumbers
 }
 
+export function truncate(input: string, wordLimit = 32) {
+  const inputSplitBySpace = input?.split(' ')
+
+  return inputSplitBySpace
+    .slice(0, wordLimit) // limit number of words
+    .concat(inputSplitBySpace.length >= wordLimit ? '...' : '') // adds '...' if applicable
+    .join(' ') // rejoin to array
+}
+
 export function sortContent(content: Frontmatter[]) {
   return content
     .filter((entry) =>

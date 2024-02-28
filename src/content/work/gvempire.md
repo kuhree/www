@@ -2,13 +2,25 @@
 title: Contract Software Development
 company: GVEMPIRE
 role: Software Engineer
-publishedAt: 2020-03-04 00:00:00
+publishedAt: 2019-11-16 00:00:00
 banner: /assets/gv-banner.png
-banner_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
+banner_alt: GVEMPIRE logo. A Rocket next to the words GVEMPIRE | Software Developers for Hire
 description: |
-  We developed a virtual showcase for the softest bedding imaginable.
+  A software development agency focused on building accessible and performant web-apps and ecommerce sites.
 tags:
   - Full-Stack
   - Design
   - Operations
 ---
+
+## Table of Contents
+
+## Context
+
+## Goals and Requirements
+
+## Implementation
+
+## Current status
+
+## Lessons Learned

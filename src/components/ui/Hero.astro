@@ -37,7 +37,7 @@ const { align = 'center', tagline, title } = Astro.props
       tagline && (
         <p
           class:list={[
-            'tagline text-sm lg:text-lg',
+            'tagline text-sm lg:text-lg max-w-[54ch]',
             { 'mx-0': align === 'start' }
           ]}
         >

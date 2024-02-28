@@ -1,20 +1,22 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { extractTitle, slugify } from 'src/lib/content'
+import { extractTitle, slugify, truncate } from '../lib/content'
 
 interface Props {
   entry: CollectionEntry<'work' | 'posts'>
 }
 
 const { data, slug, collection } = Astro.props.entry
-const { publishedAt, banner, banner_alt, tags } = data,
-  title = extractTitle(data)
+const { description = '', publishedAt, banner, banner_alt, tags } = data,
+  title = extractTitle(data),
+  descriptionTruncated = truncate(description),
+  url = `/${collection}/${slug}`
 ---
 
 <article>
   <a
     class='img-container rounded-xl rounded-b-none aspect-1 h-32 md:h-48 w-32 md:w-48 overflow-hidden'
-    href={`/${collection}/${slug}`}
+    href={url}
   >
     <img
       src={banner}
@@ -28,18 +30,25 @@ const { publishedAt, banner, banner_alt, tags } = data,
   <section
     class='flex flex-col px-4 py-2 bg-stone-200 dark:bg-stone-800 rounded-xl rounded-t-none'
   >
-    <span class='title text-xl font-semibold mb-0'>{title}</span>
-    <span class='date'>{publishedAt.toLocaleDateString()}</span>
+    <span class='date text-sm font-extralight mb-1'
+      >{publishedAt.toLocaleDateString()}</span
+    >
+    <a href={url} class='prose title text-xl font-semibold mb-0'>
+      {title}
+    </a>
+    {
+      description ? (
+        <span class='description prose mb-4'>{descriptionTruncated}</span>
+      ) : null
+    }
     <ul class='flex flex-wrap gap-2'>
       {
         tags?.slice(0, 4).map((tag) => (
-          <li>
+          <li class='text-sm font-light border-2 border-solid border-primary-300 rounded-xl px-2 py-1'>
             <a href={`/tags/${slugify(tag)}`}>{tag}</a>
           </li>
         ))
       }
-
-      {tags && tags?.length > 4 ? <li>...</li> : null}
     </ul>
   </section>
 </article>

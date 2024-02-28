@@ -20,70 +20,40 @@ const { description, tags, banner, banner_alt } = entry.data,
   <main
     class:list={[
       'w-full px-12',
-      'flex flex-col gap-12 md:flex-row-reverse items-center md:items-stretch justify-start mx-auto max-w-screen-2xl'
+      'flex flex-col gap-12 items-center justify-start mx-auto max-w-screen-2xl'
     ]}
   >
-    <aside
-      class:list={[
-        'mx-auto md:mx-0 sticky top-10 md:min-h-96 p-4 rounded bg-stone-100 dark:bg-stone-900',
-        'border-2 border-solid border-primary-900 dark:border-primary-700',
-        'md:flex-[0.4] max-w-sm self-start',
-        'shadow-md shadow-primary-500'
-      ]}
-    >
-      <slot name='aside-content'>
-        <ul class:list={['tags flex flex-wrap gap-2']}>
-          {
-            tags?.map((t) => (
-              <li
-                class:list={[
-                  'tag py-1 px-3 rounded-full',
-                  'border-2 border-solid border-primary-700 dark:border-primary-300'
-                ]}
-              >
-                <a href={`/tags/${slugify(t)}`} class:list={['tag']}>
-                  {t}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </slot>
-    </aside>
+    <Hero title={title} tagline={description} align='start'>
+      <ul class:list={['tags flex flex-wrap gap-2']}>
+        {
+          tags?.map((t) => (
+            <li
+              class:list={[
+                'tag py-1 px-3 rounded-full',
+                'border-2 border-solid border-primary-700 dark:border-primary-300'
+              ]}
+            >
+              <a href={`/tags/${slugify(t)}`} class:list={['tag']}>
+                {t}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
 
-    <section class='content flex flex-col gap-10 prose max-w-3xl px-0'>
-      <Hero title={title} align='start'>
-        <slot name='hero-content'>
-          <div class='details'>
-            <p class='description text-md mb-4'>{description}</p>
-          </div>
-        </slot>
-      </Hero>
+      {
+        banner && banner !== '' && (
+          <img
+            src={banner}
+            alt={banner_alt}
+            class='object-center object-cover h-full w-full'
+          />
+        )
+      }
+    </Hero>
 
-      {banner && banner !== '' && <img src={banner} alt={banner_alt} />}
-
+    <section class='content gap-10 prose max-w-3xl mx-auto px-0'>
       <MxContent />
     </section>
   </main>
 </BaseLayout>
-
-<style>
-  header {
-    padding-bottom: 2.5rem;
-  }
-
-  .details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .description {
-    max-width: 54ch;
-  }
-
-  .content {
-    margin-inline: auto;
-  }
-</style>

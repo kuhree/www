@@ -14,3 +14,15 @@ tags:
   - Angular
   - Groovy
 ---
+
+## Table of Contents
+
+## Context
+
+## Goals and Requirements
+
+## Implementation
+
+## Current status
+
+## Lessons Learned
