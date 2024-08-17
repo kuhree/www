@@ -5,7 +5,7 @@ title: 'Resume'
 
 # Khari Johnson
 
-[ Atlanta, GA ] . [[ kharijohnson.dev ](https://kharijohnson.dev)] . [ [kj@gvempire.com](mailto:resume@gvempire.com) ] . [ [(323) 250-6175](telto:+13232506175) ]
+[ Remote US / Atlanta, GA ] . [[ kuhree.com ](https://kuhree.com)] . [ [ hi@kuhree.com ](mailto:hi+resume@kuhree.com) ] . [ [(470) 626-2775](telto:+14706262775) ]
 
 <hr class="my-4" />
 
