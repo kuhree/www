@@ -20,5 +20,3 @@ tags:
   - Design
   - Operations
 ---
-
-## Table of Contents
