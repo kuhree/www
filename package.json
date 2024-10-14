@@ -21,7 +21,7 @@
     "@astrojs/sitemap": "3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@sentry/astro": "^8.26.0",
-    "astro": "4.14.2",
+    "astro": "4.16.1",
     "astro-robots-txt": "^1.0.0",
     "github-slugger": "^2.0.0",
     "preact": "^10.23.2",
